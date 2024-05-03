@@ -5,6 +5,8 @@ import com.pfe.rechercheens.Entity.Enumirator.Type_Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -28,7 +30,17 @@ public class DemandeDeCour {
 
     @OneToOne
     private Adress adress;
+
     @Enumerated(EnumType.STRING)
     private Statut_Demande statutDemande;
+
+    @OneToMany(mappedBy = "demandeDeCour_Etudiant")
+    private List<Etudiant> etudiants;
+
+    @OneToOne(mappedBy = "demandeDeCour_Matiere")
+    private Matiere matiere;
+
+    @OneToMany(mappedBy = "DemandeDeCour_Teacher")
+    private List<Teacher> teacher;
 
 }

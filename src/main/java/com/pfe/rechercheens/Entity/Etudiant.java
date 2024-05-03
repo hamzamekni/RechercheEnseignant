@@ -24,8 +24,6 @@ public class Etudiant {
     @NonNull
     private String Section;
 
-
-
     @JsonBackReference
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -44,5 +42,10 @@ public class Etudiant {
     )
     private List<NiveauEtude> niveau;
 
+    @ManyToOne
+    private DemandeDeCour demandeDeCour_Etudiant;
+
+    @OneToMany(mappedBy = "Etudiant")
+    private List<Paiement> paiement;
 
 }

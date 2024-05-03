@@ -5,6 +5,8 @@ import com.pfe.rechercheens.Entity.Enumirator.Type_Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -30,6 +32,13 @@ public class Teacher {
 
     @NonNull
     private String Detail_Enseigant;
+
+    @ManyToOne
+    private DemandeDeCour DemandeDeCour_Teacher;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Paiement> paiement;
+
 
 
 }

@@ -20,16 +20,20 @@ public class Adress {
     @NonNull
     private String road_adress;
 
-    @ManyToMany
-    private Region region;
 
     @JsonBackReference
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "region",
-            joinColumns = @JoinColumn(name = "region_id"),
-            inverseJoinColumns = @JoinColumn(name = "matiere_id")
+            joinColumns = @JoinColumn(name = "region_Id"),
+            inverseJoinColumns = @JoinColumn(name = "adress_Id")
     )
-    private List<Matiere> matiere;
+    private List<Region> regions;
+
+    @OneToOne(mappedBy = "adress")
+    private User user;
+
+    @OneToOne(mappedBy = "demandeDeCour")
+    private DemandeDeCour demandeDeCour;
 
 }

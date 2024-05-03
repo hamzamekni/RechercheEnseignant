@@ -32,6 +32,9 @@ public class User {
     @ManyToOne
     private Role role;
 
+    @OneToOne
+    private Adress adress;
+
     private boolean enabled;
     private long resetToken;
 

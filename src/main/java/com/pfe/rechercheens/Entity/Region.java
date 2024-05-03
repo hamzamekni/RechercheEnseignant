@@ -3,6 +3,8 @@ package com.pfe.rechercheens.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -15,6 +17,11 @@ public class Region {
     private Long region_Id;
 
     @ManyToOne
+    @NonNull
     private Ville ville;
+
+    //many to many with Adress
+    @ManyToMany(mappedBy = "regions")
+    private List<Adress> adresses;
 
 }
