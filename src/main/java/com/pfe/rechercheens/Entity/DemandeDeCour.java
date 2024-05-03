@@ -43,4 +43,7 @@ public class DemandeDeCour {
     @OneToMany(mappedBy = "DemandeDeCour_Teacher")
     private List<Teacher> teacher;
 
+    @ManyToOne
+    private Adress adress_DemandeDeCour;
+
 }

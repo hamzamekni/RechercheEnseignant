@@ -33,7 +33,7 @@ public class Adress {
     @OneToOne(mappedBy = "adress")
     private User user;
 
-    @OneToOne(mappedBy = "demandeDeCour")
-    private DemandeDeCour demandeDeCour;
+    @OneToMany(mappedBy = "adress_DemandeDeCour")
+    private List<DemandeDeCour> demandeDeCours;
 
 }
