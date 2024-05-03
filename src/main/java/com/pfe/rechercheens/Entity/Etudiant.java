@@ -45,7 +45,10 @@ public class Etudiant {
     @ManyToOne
     private DemandeDeCour demandeDeCour_Etudiant;
 
-    @OneToMany(mappedBy = "Etudiant")
+    @OneToMany(mappedBy = "etudiant")
     private List<Paiement> paiement;
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<Recommendation> recommendation;
 
 }

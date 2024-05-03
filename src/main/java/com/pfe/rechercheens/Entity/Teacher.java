@@ -39,6 +39,8 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     private List<Paiement> paiement;
 
+    @OneToMany(mappedBy = "teacher")
+    private List<Recommendation> recommendation;
 
 
 }
