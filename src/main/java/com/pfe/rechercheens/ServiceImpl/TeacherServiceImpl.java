@@ -1,0 +1,45 @@
+package com.pfe.rechercheens.ServiceImpl;
+
+import com.pfe.rechercheens.Entity.Teacher;
+import com.pfe.rechercheens.Repository.TeacherRepository;
+import com.pfe.rechercheens.Service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class TeacherServiceImpl implements TeacherService {
+
+    @Autowired
+    private TeacherRepository teacherRepository;
+
+    @Override
+    public Teacher saveTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
+
+    @Override
+    public Teacher updateTeacher(Long id, Teacher updatedTeacher) {
+        Teacher existingTeacher = teacherRepository.findById(id).orElse(null);
+        if (existingTeacher != null) {
+            updatedTeacher.setTeacherId(existingTeacher.getTeacherId());
+            return teacherRepository.save(updatedTeacher);
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteTeacher(Long id) {
+        teacherRepository.deleteById(id);
+    }
+
+    @Override
+    public Teacher getTeacherById(Long id) {
+        return teacherRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Teacher> getAllTeachers() {
+        return teacherRepository.findAll();
+    }
+}
